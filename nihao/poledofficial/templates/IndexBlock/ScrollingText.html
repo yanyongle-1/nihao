@@ -1,0 +1,17 @@
+{# 交流展示卡片 #}
+<div class="mdui-valign mdui-m-t-5">
+    <p class="mdui-center mdui-typo-display-1" style="font-weight:900;">
+        {{ online_chating }}
+    </p>
+</div>
+<div class="font-buttum">
+    <span></span>
+</div>
+
+<div class="mdui-card mdui-shadow-0" style="background-color: #FFFFFF00;">
+    <div class="mdui-card-content" style="word-wrap:break-word; border-radius: 15px; background-color: #FFFFFF;">
+        <marquee loop="-1" behavior="scroll" scrollamount="2" scrolldelay="5" direction={{ option.direction }} height="200">
+            {{ option.scrolling_text | safe }}
+        </marquee>
+    </div>
+</div>

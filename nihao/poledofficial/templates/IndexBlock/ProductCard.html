@@ -1,0 +1,29 @@
+{# 产品展示卡片 #}
+<div class="mdui-valign">
+    <p class="mdui-center mdui-typo-display-1" style="font-weight:900;">
+        {{ products_show }}
+    </p>
+</div>
+<div class="font-buttum">
+    <span></span>
+</div>
+
+<div class="mdui-container-fluid">
+    <div class="mdui-row">
+        {% for pro in option.product_card.all|slice:":4" %}
+            <div class="mdui-col-md-3" style="margin-bottom: 10px;">
+                <div class="mdui-card mdui-shadow-10">
+                    <div class="mdui-card-media mdui-ripple">
+                        <img src="/media/{{ pro.image }}" height='250px' onclick="window.location.href='{{ language }}producecard?p-card={{ pro.title }}'"
+                             style="cursor:pointer;"/>
+                        <div class="mdui-card-media-covered">
+                            <div class="mdui-card-primary">
+                                <div class="mdui-card-primary-subheading mdui-text-truncate">{{ pro.title }}</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+</div>

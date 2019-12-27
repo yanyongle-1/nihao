@@ -1,0 +1,26 @@
+{% extends 'base.html' %}{# 引入头部 #}
+{#  文章  #}
+
+{% block PostArticle %}
+    {% include 'redblock.html' %}
+    <div class="body-block">
+        <div class="mdui-card">
+            <div class="mdui-card-primary">
+                <div class="mdui-container-fluid">
+                    <div class="mdui-row">
+                        <div class="mdui-col-md-2">
+                            <div class="mdui-card-primary-subtitle">作者：{{ post_article_detail.author }}</div>
+                        </div>
+                        <div class="mdui-col-md-3">
+                            <div class="mdui-card-primary-subtitle">发布时间：{{ post_article_detail.time }}</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="mdui-divider" style="margin-top: 10px;"></div>
+            </div>
+            <div class="mdui-card-content all-contents">
+                {{ post_article_detail.contents | safe}}
+            </div>
+        </div>
+    </div>
+{% endblock %}

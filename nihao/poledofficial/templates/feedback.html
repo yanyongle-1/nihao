@@ -1,0 +1,35 @@
+{% extends 'base.html' %}{# 引入头部 #}
+    {#  留言反馈  #}
+    {% block Feed %}
+        {% include 'redblock.html' %}
+        <div  class="body-block">
+            <form action="{{ language }}message/" method="post" class="basic-grey">
+                {% csrf_token %}
+                <label>
+                    <span>{{ f_name }}</span>
+                    <input id="name" type="text" name="name" placeholder="{{ f_name01 }}" />
+                </label>
+                <label>
+                    <span>{{ f_email }}</span>
+                    <input id="email" type="email" name="email" placeholder="{{ f_email01 }}" />
+                </label>
+                <label>
+                    <span>{{ f_qq }}</span>
+                    <input id="qq" type="text" name="qq" placeholder="{{ f_qq01 }}" />
+                </label>
+                <label>
+                    <span>{{ f_number }}</span>
+                    <input id="number" type="text" name="phone" placeholder="{{ f_number01 }}" />
+                </label>
+
+                <label>
+                    <span>{{ f_message }}</span>
+                    <textarea id="message" name="message" placeholder="{{ f_message01 }}"></textarea>
+                </label>
+                <label>
+                    <span>&nbsp;</span>
+                    <input type="submit" class="button" value="{{ f_send }}" />
+                </label>
+            </form>
+        </div>
+    {% endblock %}

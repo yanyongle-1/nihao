@@ -1,0 +1,30 @@
+{% load mytag %}
+{# 最新消息 #}
+<div class="mdui-valign mdui-m-t-5">
+    <p class="mdui-center mdui-typo-display-1" style="font-weight:900;">
+        {{ latest_news }}
+    </p>
+</div>
+<div class="font-buttum">
+    <span></span>
+</div>
+
+<div class="mdui-container-fluid">
+    <div class="mdui-row">
+
+        {% for wen in post_article %}
+            <div class="mdui-col-md-4" style="margin-bottom: 10px;">
+                <div class="mdui-card mdui-shadow-1 mdui-hoverable">
+                    <div class="mdui-card-media mdui-ripple mdui-hidden-sm-down">
+                        <img src={{ wen.contents | postArticles }} height="250px" onclick="window.location.href='{{ language }}postarticle?p-article={{ wen.title }}'" style="cursor:pointer;" />
+                    </div>
+                    <div class="mdui-divider"></div>
+                    <div class="mdui-card-primary">
+                        <div class="mdui-card-primary-title mdui-text-truncate"><a href="{{ language }}postarticle?p-article={{ wen.title }}" class="mdui-typo" style="text-decoration:none; color: #ce1b28">{{ wen.title }}</a></div>
+                        <div class="mdui-card-primary-subtitle mdui-text-truncate">{{ wen.summary | safe}}</div>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+</div>

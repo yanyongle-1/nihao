@@ -1,0 +1,72 @@
+{% extends 'base.html' %}{# 引入头部 #}
+{% block postlist %}
+    {% include 'redblock.html' %}
+    <div class="body-block">
+
+        <div class="mdui-typo mdui-container-fluid">
+            <div class="mdui-row">
+                {% for po_list in  contacts_post.object_list %}
+                <div class="mdui-typo mdui-card mdui-shadow-0" style="margin-bottom: 15px;">
+                    <div class="mdui-card-primary">
+                        <div class="mdui-card-primary-title">
+                            <a href="{{ language }}postarticle?p-article={{ po_list.title }}" style="color: #ac2925!important;">{{ po_list.title }}</a></div>
+                        <div class="mdui-card-primary-subtitle">{{ po_list.summary }}</div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+
+        {#分页#}
+        <ul class="pagination mdui-typo">
+            {# 上一页 #}
+            <li>
+                {% if contacts_post.has_previous %}
+                    <button class="mdui-btn mdui-color-theme-accent mdui-ripple" style="background-color: #ac2925;margin: 5px;">
+                        <a href="?page={{ contacts_post.previous_page_number }}&p-card={{ p_card }}" aria-label="Previous" style=" color: #fff;">
+                            上一页
+                        </a>
+                    </button>
+                {% else %}
+                    {# 什么都不显示 #}
+                {% endif %}
+            </li>
+            {# 全部页码 #}
+            {% for page_num in page_range %}
+                {% if page_num == contacts_post.number %}
+                    <li class="active">
+                        <button class="mdui-btn mdui-color-theme-accent mdui-ripple" style="background-color: #e4e4e4;min-width: 25px;margin: 5px;">
+                            {{ page_num }}
+                        </button>
+                    </li>
+                {% else %}
+                    {% if page_num == '...' %}
+                        <li>
+                            <button class="mdui-btn mdui-color-theme-accent mdui-ripple" style="background-color: #e4e4e4;min-width: 25px;margin: 5px;">
+                                {{ page_num }}
+                            </button>
+                        </li>
+                    {% else %}
+                        <li>
+                            <button class="mdui-btn mdui-color-theme-accent mdui-ripple" style="background-color: #e4e4e4;min-width: 25px;margin: 5px;">
+                                <a href="?page={{ page_num }}&p-card={{ p_card }}">{{ page_num }}</a>
+                            </button>
+                        </li>
+                    {% endif %}
+                {% endif %}
+            {% endfor %}
+            {# 下一页 #}
+            <li>
+                {% if contacts_post.has_next %}
+                    <button class="mdui-btn mdui-color-theme-accent mdui-ripple" style="background-color: #ac2925;margin: 5px;">
+                        <a href="?page={{ contacts_post.next_page_number }}&p-card={{ p_card }}" aria-label="Next" style=" color: #fff;">
+                            下一页
+                        </a>
+                    </button>
+                {% else %}
+                    {# 什么都不显示 #}
+                {% endif %}
+            </li>
+        </ul>
+    </div>
+{% endblock %}

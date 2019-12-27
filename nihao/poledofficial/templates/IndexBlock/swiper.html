@@ -1,0 +1,20 @@
+{# 轮播图 #}
+<div class="swiper-container">
+    <div class="swiper-wrapper">
+
+        <div class="swiper-slide" style="background: url(/media/{{ option.swiper01 }}) no-repeat; background-size:cover;"></div>
+        <div class="swiper-slide" style="background: url(/media/{{ option.swiper02 }}) no-repeat; background-size:cover;"></div>
+        <div class="swiper-slide" style="background: url(/media/{{ option.swiper03 }}) no-repeat; background-size:cover;"></div>
+
+    </div>
+    <div class="swiper-pagination"></div>
+</div>
+<script>
+    var swiper = new Swiper('.swiper-container', {
+        autoplay : 5000,
+        effect : 'fade',
+        loop: true,
+        pagination: '.swiper-pagination',
+        paginationClickable: true
+    });
+</script>

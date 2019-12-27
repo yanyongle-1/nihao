@@ -1,0 +1,74 @@
+{% extends 'base.html' %}{# 引入头部 #}
+{% block downloadlist %}
+{# 这个是下载列表 #}
+        {% include 'redblock.html' %}
+    <div class="body-block">
+<div class="mdui-typo mdui-container-fluid">
+    <div class="mdui-row">
+        {% for dow_file in contacts_download.object_list %}
+            <div class="mdui-col-sm-3" style="margin-bottom: 10px;">
+                <div class="mdui-card mdui-shadow-1">
+                    <div class="mdui-card-media mdui-ripple" style="border-bottom: 1px solid gainsboro;">
+                        <img src=/media/{{ dow_file.image }} width="100%" height="220px"/>
+                    </div>
+                    <div class="mdui-card-actions">
+{#                        <div class="mdui-divider"></div>#}
+                        <button class="mdui-btn mdui-ripple mdui-color-red-a700" onclick="window.location.href='/media/{{ dow_file.file }}'">查看</button>
+                        <button class="mdui-btn mdui-ripple mdui-float-right mdui-color-red-a700" onclick="window.location.href='/download_list?tests={{ dow_file.file }}'">下载</button>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+</div>
+                <ul class="pagination mdui-typo">
+                        {# 上一页 #}
+                        <li>
+                            {% if contacts_download.has_previous %}
+                                <button class="mdui-btn mdui-color-theme-accent mdui-ripple" style="background-color: #ac2925;margin: 5px;">
+                                <a style="color: #ffffff;" href="?page={{ contacts_download.previous_page_number }}&download-card={{ download_card }}" aria-label="Previous">
+                                    上一页
+                                </a>
+                                </button>
+                            {% else %}
+                            {% endif %}
+                        </li>
+                        {# 全部页码 #}
+                        {% for page_num in page_range_download %}
+                            {% if page_num == contacts_download.number %}
+                                <li class="active">
+                                    <button class="mdui-btn mdui-color-theme-accent mdui-ripple" style="background-color: #e4e4e4;min-width: 25px;margin: 5px;">
+                                        {{ page_num }}
+                                    </button>
+                                </li>
+                            {% else %}
+                                {% if page_num == '...' %}
+                                    <li>
+                                        <button class="mdui-btn mdui-color-theme-accent mdui-ripple" style="background-color: #e4e4e4;min-width: 25px;margin: 5px;">
+                                            {{ page_num }}
+                                        </button>
+                                    </li>
+                                {% else %}
+                                    <li>
+                                        <button class="mdui-btn mdui-color-theme-accent mdui-ripple" style="background-color: #e4e4e4;min-width: 25px;margin: 5px;">
+                                            <a href="?page={{ page_num }}&download-card={{ download_card }}">{{ page_num }}</a>
+                                        </button>
+                                    </li>
+                                {% endif %}
+                            {% endif %}
+                        {% endfor %}
+                        {# 下一页 #}
+                        <li>
+                            {% if contacts_download.has_next %}
+                                <button class="mdui-btn mdui-color-theme-accent mdui-ripple" style="background-color: #ac2925;margin: 5px;">
+                                    <a style="color: #ffffff" href="?page={{ contacts_download.next_page_number }}&download-card={{ download_card }}" aria-label="Next">
+                                        下一页
+                                    </a>
+                                </button>
+                            {% else %}
+{#                                <span aria-hidden="true">&raquo;</span>#}
+                            {% endif %}
+                        </li>
+                    </ul>
+    </div>
+{% endblock %}

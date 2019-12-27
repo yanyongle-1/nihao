@@ -1,0 +1,100 @@
+{# PC顶部导航栏 #}
+<div class="mdui-typo mdui-container-fluid mdui-color-white">
+    <div class="mdui-row">
+        <div class="mdui-col-xs-12 mdui-col-sm-6 mdui-col-md-2">
+            <div class="mdui-row">
+                <div class="mdui-col-xs-1 mdui-hidden-sm-down"></div>
+                <div class="mdui-col-xs-3 mdui-hidden-md-up">
+                    <a href="javascript:;" class="mdui-btn mdui-btn-icon" mdui-drawer="{target: '#left-drawer'}" style="margin: 26px;"><i class="mdui-icon material-icons mdui-text-color-black-secondary" style="font-size: 30px;">menu</i></a>
+                </div>
+                <div class="mdui-col-xs-9" style="float: right; padding-top: 4%;">
+                    <img src="/media/{{ option.logo }}" width="210px" height="67px" onclick="window.location.href='{{ language }}'" style="cursor:pointer;" />
+                </div>
+            </div>
+        </div>
+        <div class="mdui-col-md-8 mdui-hidden-sm-down">
+            <div class="mdui-row">
+                <div class="mdui-col-sm-1 mdui-float-right" style="top: 28px;">
+                    <span class="mdui-typo-subheading" style="font-weight:900;">{{ language_change|safe }}</span>
+                </div>
+                <div class="mdui-col-sm-1 mdui-float-right" style="top: 28px;">
+                    <span class="mdui-typo-subheading" style="font-weight:900;">
+                        <div class="dropdown">
+                          <span style="cursor:pointer;">{{ talent_idea }}</span>
+                          <div class="dropdown-content">
+                            <p><a href="{{ language }}option_detail?opt-de=company_recruit&opt-title={{ company_recruit }}" class="top-menu">{{ company_recruit }}</a></p>
+                            <p><a href="{{ language }}option_detail?opt-de=contact_information&opt-title={{ contact_information }}" class="top-menu">{{ contact_information }}</a></p>
+                            <p><a href="{{ language }}option_detail?opt-de=company_map&opt-title={{ company_map }}" class="top-menu">{{ company_map }}</a></p>
+                          </div>
+                        </div>
+                    </span>
+                </div>
+                <div class="mdui-col-sm-1 mdui-float-right" style="top: 28px;">
+                    <span class="mdui-typo-subheading" style="font-weight:900;">
+                        <div class="dropdown">
+                          <span style="cursor:pointer;">{{ news }}</span>
+                          <div class="dropdown-content">
+                              {% for p_new in post_category%}
+                            <p><a href="{{ language }}post_list?p-card={{ p_new.category_name }}" class="top-menu">{{ p_new.category_name }}</a></p>
+                              {% endfor %}
+                          </div>
+                        </div>
+                    </span>
+                </div>
+                <div class="mdui-col-sm-1 mdui-float-right" style="top: 28px;">
+                    <span class="mdui-typo-subheading" style="font-weight:900;">
+                        <div class="dropdown">
+                          <span style="cursor:pointer;">{{ download }}</span>
+                          <div class="dropdown-content">
+                              {%  for dow in download_category %}
+                                  <p><a href="{{ language }}download_list_read?download-card={{ dow.category_name }}" class="top-menu">{{ dow.category_name }}</a></p>
+                              {% endfor %}
+                          </div>
+                        </div>
+                    </span>
+                </div>
+                <div class="mdui-col-sm-1 mdui-float-right" style="top: 28px;">
+                    <span class="mdui-typo-subheading" style="font-weight:900;">
+                        <div class="dropdown">
+                          <span style="cursor:pointer;">{{ all_products }}</span>
+                          <div class="dropdown-content">
+                              {% for pro_l in produce_category %}
+                                    <p><a href="{{ language }}produce_list?pro-card={{ pro_l.category_name }}" class="top-menu">{{ pro_l.category_name }}</a></p>
+                              {% endfor %}
+                          </div>
+                        </div>
+                    </span>
+                </div>
+                <div class="mdui-col-sm-1 mdui-float-right" style="top: 28px;">
+                    <span class="mdui-typo-subheading" style="font-weight:900;">
+                        <div class="dropdown">
+                          <span style="cursor:pointer;">{{ about_us }}</span>
+                          <div class="dropdown-content">
+                              <p><a href="{{ language }}option_detail?opt-de=company_info&opt-title={{ company_info }}" class="top-menu">{{ company_info }}</a></p>
+                              <p><a href="{{ language }}option_detail?opt-de=company_organization&opt-title={{ company_organization }}" class="top-menu">{{ company_organization }}</a></p>
+                              <p><a href="{{ language }}option_detail?opt-de=company_environment&opt-title={{ company_environment }}" class="top-menu">{{ company_environment }}</a></p>
+                              <p><a href="{{ language }}post_list?p-card={{ company_activities }}" class="top-menu">{{ company_activities }}</a></p>
+                          </div>
+                        </div>
+                    </span>
+                </div>
+                <div class="mdui-col-sm-1 mdui-float-right" style="top: 28px;">
+                    <span class="mdui-typo-subheading mdui-float-right" style="font-weight:900;">{{ home|safe }}</span>
+                </div>
+            </div>
+        </div>
+        <div class="mdui-col-md-2 mdui-hidden-sm-down">
+            <form method="post" id="searchform" class="search-form mdui-hidden-sm-down" action="{{ language }}search_date/">
+                {% csrf_token %}
+                <label>
+                    <input type="search" class="search-field" value="" name="search" id="s" required="required">
+                </label>
+                <label>
+                    <button type="submit" class="search-submit" value="search">
+                        <i class="mdui-icon material-icons search-span">&#xe8b6;</i>
+                    </button>
+                </label>
+            </form>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,74 @@
+{% extends 'base.html' %}{# 引入头部 #}
+{% block noresult %}
+    {% include 'redblock.html' %}
+    <div class="body-block">
+        <div class="mdui-typo mdui-container-fluid">
+            <div class="mdui-row">
+                {% for search in search_produce %}
+                    <div class="mdui-col-sm-3" style="margin-bottom: 10px;">
+                        <div class="mdui-card mdui-shadow-5" onclick="window.location.href='{{ language }}producecard?p-card={{ search.title }}'"
+                                     style="cursor:pointer;">
+                            <div class="mdui-card-media mdui-ripple">
+                                <img src=/media/{{ search.image }} height="250px" />
+                                <div class="mdui-card-media-covered">
+                                    <div class="mdui-card-primary">
+                                        <div class="mdui-card-primary-title">{{ search.title }}</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    {% empty %}
+                    <style>
+                        .wrapper {
+                            margin:0 auto;
+                            width:728px;
+                            margin-top:100px;
+                        }
+                        .main {
+                            background-color:#fff;
+                            border:1px solid #e9e9e9;
+                            border-top: 3px solid #ce1b28;
+                            padding:40px;
+                            padding-bottom:25px;
+                            box-shadow: 0 10px 6px -6px #bbb;
+                            -moz-box-shadow: 0 10px 6px -6px #bbb;
+                            -webkit-box-shadow: 0 10px 6px -6px #bbb;
+                        }
+                        .title {
+                            text-align:center;
+                            font-size:26px;
+                            color:#ce1b28;
+                        }
+                        .content {
+                            border-top:1px solid #ddd;
+                            margin-top: 20px;
+                            padding: 25px 20px;
+                        }
+                        .footer {
+                            border-top:1px solid #ddd;
+                            padding-top:20px;
+                            font-size:14px;
+                            font-family: "Helvetica Neue", "Luxi Sans", "DejaVu Sans", Tahoma, "Hiragino Sans GB";
+                            text-align: right;
+                            color: #999;
+                        }
+                        a, a:hover, a:active {color:#999; text-decoration:none;}
+                        a:hover {text-decoration:underline;}
+                    </style>
+                    <div class="wrapper">
+                        <div class="main">
+                            <div class="title">亲,您要的商品没找到...</div>
+                            <div class="content">
+                                <p>看到这个页面表示您要查看的商品不存在。</p>
+                            </div>
+                            <div class="footer">
+                                <a target="_blank" href="/">西安宝莱特光电科技有限公司</a>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+{% endblock %}

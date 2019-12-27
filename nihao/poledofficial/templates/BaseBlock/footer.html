@@ -1,0 +1,17 @@
+{#  页脚  #}
+<footer id="foo">
+    <div class="mdui-container-fluid mdui-typo">
+        <div class="mdui-row" style="margin: 0 5% 0 10%;">
+            <div class="mdui-col-md-4 mdui-text-color-white-text"><p>{{ option.footer_left | safe }}</p></div>
+            <div class="mdui-col-md-4 mdui-text-color-white-text"><p>{{ option.footer_content | safe }}</p></div>
+            <div class="mdui-col-md-4 mdui-text-color-white-text"><p>{{ option.footer_right | safe }}</p></div>
+        </div>
+    </div>
+    <div style="width: 60%; height: 2px; border-top: 1px solid #4b4b4b; margin: 0 20% 0 20%;"></div>
+    <p style="color: #FFFFFF;text-align:center">
+            {{ option.site_footer }}
+    </p>
+    <p style="color: #FFFFFF;text-align:center">
+        {{ option.record }}
+    </p>
+</footer>

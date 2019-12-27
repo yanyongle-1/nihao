@@ -1,0 +1,17 @@
+{% extends 'base.html' %}{# 引入头部 #}
+{#  页面  #}
+{% block Page %}
+    {% include 'redblock.html' %}
+    <div class="body-block">
+        <div class="mdui-card">
+            <div class="mdui-card-content mdui-typo">
+               {{ option_details.company_info | safe }}
+               {{ option_details.company_organization | safe }}
+               {{ option_details.company_environment | safe }}
+               {{ option_details.company_recruit | safe }}
+               {{ option_details.contact_information | safe }}
+                <iframe src="/media/{{ option_details.company_map }}" style="width: 100%; height: 550px;"></iframe>
+            </div>
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,9 @@
+{% extends 'base.html' %}{# 引入头部 #}
+{% block IndexContent %}
+    {% include 'IndexBlock/swiper.html' %}
+    <div class="body-block">
+        {% include 'IndexBlock/ProductCard.html' %}
+        {% include 'IndexBlock/ScrollingText.html' %}
+        {% include 'IndexBlock/news.html' %}
+    </div>
+{% endblock %}

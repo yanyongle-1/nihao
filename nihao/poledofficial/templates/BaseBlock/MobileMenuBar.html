@@ -1,0 +1,94 @@
+{# 移动侧边菜单 #}
+<div class="mdui-typo mdui-drawer mdui-drawer-close ydcb mdui-hidden-md-up go-home" id="left-drawer">
+    <div class="mdui-panel" mdui-panel>
+        <div class="mdui-panel-item mdui-typo" style="background-color: #00000000;">
+            <div class="mdui-panel-item-header"
+                 style="border-bottom: 1px solid #ce1b28; background-color: #21202e; color: #FFFFFF;">
+                <div class="mdui-panel-item-title language-change">{{ home|safe }}</div>
+            </div>
+        </div>
+        <div class="mdui-panel-item mdui-typo" style="background-color: #00000000;">
+            <div class="mdui-panel-item-header"
+                 style="border-bottom: 1px solid #ce1b28; background-color: #21202e; color: #FFFFFF;">
+                <div class="mdui-panel-item-title language-change">{{ language_change|safe }}</div>
+            </div>
+        </div>
+        <div class="mdui-panel-item" style="background-color: #00000000;">
+            <div class="mdui-panel-item-header"
+                 style="border-bottom: 1px solid #ce1b28; background-color: #21202e; color: #FFFFFF;">
+                <div style="color: #ac2925">{{ about_us }}</div>
+                <i class="mdui-panel-item-arrow mdui-icon material-icons" style="color: #ac2925">keyboard_arrow_down</i>
+            </div>
+            <div class="mdui-panel-item-body" style="background-color: #21202e;">
+                <p>
+                    <a href="{{ language }}option_detail?opt-de=company_info&opt-title={{ company_info }}">{{ company_info }}</a>
+                </p>
+                <p>
+                    <a href="{{ language }}option_detail?opt-de=company_organization&opt-title={{ company_organization }}">{{ company_organization }}</a>
+                </p>
+                <p>
+                    <a href="{{ language }}option_detail?opt-de=company_environment&opt-title={{ company_environment }}">{{ company_environment }}</a>
+                </p>
+                <p><a href="{{ language }}post_list?p-card={{ company_activities }}">{{ company_activities }}</a></p>
+            </div>
+        </div>
+        <div class="mdui-panel-item" style="background-color: #00000000;">
+            <div class="mdui-panel-item-header"
+                 style="border-bottom: 1px solid #ce1b28; background-color: #21202e; color: #FFFFFF;">
+                <div style="color: #ac2925">{{ all_products }}</div>
+                <i class="mdui-panel-item-arrow mdui-icon material-icons" style="color: #ac2925">keyboard_arrow_down</i>
+            </div>
+            <div class="mdui-panel-item-body" style="background-color: #21202e; color: #FFFFFF;">
+                {% for cat in produce_category %}
+                    <p><a href="{{ language }}produce_list?pro-card={{ cat.category_name }}">{{ cat.category_name }}</a></p>
+                {% endfor %}
+            </div>
+        </div>
+        <div class="mdui-panel-item" style="background-color: #00000000;">
+            <div class="mdui-panel-item-header"
+                 style="border-bottom: 1px solid #ce1b28; background-color: #21202e; color: #FFFFFF;">
+                <div style="color: #ac2925">{{ download }}</div>
+                <i class="mdui-panel-item-arrow mdui-icon material-icons" style="color: #ac2925">keyboard_arrow_down</i>
+            </div>
+            <div class="mdui-panel-item-body" style="background-color: #21202e; color: #FFFFFF;">
+                {% for dow in download_category %}
+                    <p>
+                        <a href="{{ language }}download_list_read?download-card={{ dow.category_name }}">{{ dow.category_name }}</a>
+                    </p>
+                {% endfor %}
+
+            </div>
+        </div>
+        <div class="mdui-panel-item" style="background-color: #00000000;">
+            <div class="mdui-panel-item-header"
+                 style="border-bottom: 1px solid #ce1b28; background-color: #21202e; color: #FFFFFF;">
+                <div style="color: #ac2925">{{ news }}</div>
+                <i class="mdui-panel-item-arrow mdui-icon material-icons" style="color: #ac2925">keyboard_arrow_down</i>
+            </div>
+            <div class="mdui-panel-item-body" style="background-color: #21202e; color: #FFFFFF;">
+                {% for pcat in post_category %}
+                    <p><a href="{{ language }}post_list?p-card={{ pcat.category_name }}">{{ pcat.category_name }}</a></p>
+                {% endfor %}
+            </div>
+        </div>
+        <div class="mdui-panel-item" style="background-color: #00000000;">
+            <div class="mdui-panel-item-header"
+                 style="border-bottom: 1px solid #ce1b28; background-color: #21202e; color: #FFFFFF;">
+                <div style="color: #ac2925">{{ talent_idea }}</div>
+                <i class="mdui-panel-item-arrow mdui-icon material-icons" style="color: #ac2925">keyboard_arrow_down</i>
+            </div>
+            <div class="mdui-panel-item-body" style="background-color: #21202e; color: #FFFFFF;">
+                <p>
+                    <a href="{{ language }}option_detail?opt-de=company_recruit&opt-title={{ company_recruit }}">{{ company_recruit }}</a>
+                </p>
+                <p>
+                    <a href="{{ language }}option_detail?opt-de=contact_information&opt-title={{ contact_information }}">{{ contact_information }}</a>
+                </p>
+                <p>
+                    <a href="{{ language }}option_detail?opt-de=company_map&opt-title={{ company_map }}">{{ company_map }}</a>
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+
