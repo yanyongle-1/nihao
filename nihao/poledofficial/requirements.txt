@@ -8,5 +8,5 @@ lxml==4.4.1
 pip==19.0.3
 pyquery==1.4.0
 pytz==2019.2
-setuptools==40.8.0
+setuptools==65.5.1
 sqlparse==0.3.0
